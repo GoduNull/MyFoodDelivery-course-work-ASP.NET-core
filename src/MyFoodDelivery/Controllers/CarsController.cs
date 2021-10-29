@@ -20,7 +20,8 @@ namespace MyFoodDelivery.Data.Controllers
             this._allCategories = carsCategory;
         }
         public ViewResult List()
-        {    
+        {
+            ViewBag.Title = "Страница с автомобилями";
             CarsListViewModels obj = new CarsListViewModels();
             obj.AllCars = _allCars.Cars;
             obj.CurrCategory = "Автомобили";
