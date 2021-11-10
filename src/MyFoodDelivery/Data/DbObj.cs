@@ -89,7 +89,7 @@ namespace MyFoodDelivery.Data
                 {
                     var list = new Category[]
                     {
-                                  new Category{CategoryName="Электромобили", Desc="Современные"},
+      new Category{CategoryName="Электромобили", Desc="Современные"},
                     new Category{CategoryName="Классика", Desc="С двигателем внутреннего згорания"}
                     };
                     category = new Dictionary<string, Category>();
