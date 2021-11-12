@@ -35,6 +35,13 @@ namespace MyFoodDelivery.Data.Models
             });
             _myFoodDbContent.SaveChanges();
         }
+        public void DeleteToCart(int id) //TODO голова болит
+        {
+            var asd = _myFoodDbContent.ShopCartItems.Where(c => (c.ShopCarId == ShopCartId)&&(c.Product.Id== id)).FirstOrDefault();
+            this._myFoodDbContent.ShopCartItems.Remove(asd);
+            _myFoodDbContent.SaveChanges();
+
+        }
         public List<ShopCartItem> GetShopCartItems()
         {
             return _myFoodDbContent.ShopCartItems.Where(c => c.ShopCarId == ShopCartId).Include(s => s.Product).ToList();

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -9,7 +10,6 @@ namespace MyFoodDelivery.Data.Models
 {
     public class Order
     {
-        [BindNever]
         public int Id { get; set; }
         [Display(Name="Введите Имя")]
         [StringLength(20)]
