@@ -5,11 +5,11 @@ using System.Threading.Tasks;
 
 namespace MyFoodDelivery.Data.Models
 {
-    public class ShopCartItem
+    public class FastFoodCafe
     {
         public int Id { get; set; }
-        public Product Product { get; set; }
-        public int Price { get; set; }
-        public string ShopCarId { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public List<Product> Products { get; set; }
     }
 }

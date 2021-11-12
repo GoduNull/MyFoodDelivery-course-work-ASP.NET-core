@@ -24,7 +24,7 @@ namespace MyFoodDelivery
         [Obsolete]
         public Startup(Microsoft.AspNetCore.Hosting.IHostingEnvironment hostingEnvironment)
         {
-            _confstring = new ConfigurationBuilder().SetBasePath(hostingEnvironment.ContentRootPath).AddJsonFile("dbsettings.json").Build();
+            _confstring = new ConfigurationBuilder().SetBasePath(hostingEnvironment.ContentRootPath).AddJsonFile("MyfoodDbsettings.json").Build();
 
         }
         // This method gets called by the runtime. Use this method to add services to the container.
@@ -33,11 +33,11 @@ namespace MyFoodDelivery
         {
 
             services.AddSession();
-            services.AddTransient<IAllCars, CarRepository>();
-            services.AddTransient<ICarsCategory, CategoryRepository>();
+            services.AddTransient<IAllProduct, ProductRepository>();
+            services.AddTransient<IFastFoodCafe, FastFoodCafeRepository>();
             services.AddTransient<IAllOrders, OrdersRepository>();
             services.AddMvc(option => option.EnableEndpointRouting = false);
-            services.AddDbContext<DbContent>(options => options.UseSqlServer(_confstring.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<MyFoodDbContent>(options => options.UseSqlServer(_confstring.GetConnectionString("DefaultConnection")));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(sp => ShopCart.GetCart(sp));
             services.AddMemoryCache();
@@ -54,7 +54,7 @@ namespace MyFoodDelivery
             app.UseMvc(routes =>
             {
                 routes.MapRoute(name: "default", template: "{controller=Home}/{action=Index}/{id?}");
-                routes.MapRoute(name: "categoryFilter", template: "Car/{action}/{category?}", defaults: new { Controller = "Car", action = "List" });
+                routes.MapRoute(name: "productFilter", template: "Products/{action}/{fastFoodCafe?}", defaults: new { Controller = "Products", action = "List" });
                 });
             if (env.IsDevelopment())
             {
@@ -84,7 +84,7 @@ namespace MyFoodDelivery
             using (var scope = app.ApplicationServices.CreateScope())
             {
                 DbContent content = scope.ServiceProvider.GetRequiredService<DbContent>();
-                DbObj.Initial(content);
+                //DbObj.Initial(content);
             }
         }
     }

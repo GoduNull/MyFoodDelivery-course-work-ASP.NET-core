@@ -9,9 +9,9 @@ namespace MyFoodDelivery.Data.Models
     {
         public int Id { get; set; }
         public int OrderId { get; set; }
-        public int CarID { get; set; }
+        public int ProductId { get; set; }
         public uint Price { get; set; }
-        public virtual Car Car { get; set; }
         public virtual Order Order { get; set; }
+        public virtual Product Product { get; set; }
     }
 }

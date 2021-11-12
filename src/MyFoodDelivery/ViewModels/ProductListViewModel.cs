@@ -6,10 +6,9 @@ using System.Threading.Tasks;
 
 namespace MyFoodDelivery.ViewModels
 {
-    public class ShopCartViewModel
+    public class ProductListViewModel
     {
-        public ShopCart ShopCart { get; set; }
-        public int PriceProduct { get; set; }
-        public int PriceAll { get; set; }
+        public IEnumerable<Product> AllProduct { get; set; }
+        public string CurrFastFoodCafe { get; set; }
     }
 }

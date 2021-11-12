@@ -9,29 +9,30 @@ namespace MyFoodDelivery.Data.Repository
 {
     public class OrdersRepository : IAllOrders
     {
-        private readonly DbContent dbContent;
+        private readonly MyFoodDbContent _myFoodDbContent;
         private readonly ShopCart shopCart;
-        public OrdersRepository(DbContent dbContent, ShopCart shopCart)
+        public OrdersRepository(MyFoodDbContent myFoodDbContent, ShopCart shopCart)
         {
-            this.dbContent = dbContent;
+            this._myFoodDbContent = myFoodDbContent;
             this.shopCart = shopCart;  
         }
         public void createOrder(Order order)
         {
             order.OrderTime = DateTime.Now;
-            dbContent.Order.Add(order);
+            _myFoodDbContent.Orders.Add(order);
+            _myFoodDbContent.SaveChanges();
             var items = shopCart.ListShopItems;
             foreach(var el in items)
             {
                 var orderDetail = new OrderDetail()
                 {
-                    CarID=el.Car.Id,
+                    ProductId=el.Product.Id,
                     OrderId=order.Id,
-                    Price=el.Car.Price
+                    Price=el.Product.Price
                 };
-                dbContent.OrderDetail.Add(orderDetail);
+                _myFoodDbContent.OrderDetails.Add(orderDetail);
             }
-            dbContent.SaveChangesAsync();
+            _myFoodDbContent.SaveChanges(); //TODO
         }
     }
 }

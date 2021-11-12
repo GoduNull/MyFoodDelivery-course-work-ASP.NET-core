@@ -1,10 +1,10 @@
-﻿<h1>Все автомобили</h1>
-<h3>@Model.CurrCategory</h3>
+﻿<h1>Все товары</h1>
+<h3>@Model.CurrFastFoodCafe</h3>
 <div class="row mt-5 mb-2  ">
     @{
-        foreach (Car car in Model.AllCars)
+        foreach (Product product in Model.AllProduct)
         {
-            @Html.Partial("Allcars", car)
+            @Html.Partial("AllProduct", product)
         }
     }
 </div>

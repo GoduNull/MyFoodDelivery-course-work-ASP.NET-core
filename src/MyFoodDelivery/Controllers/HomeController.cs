@@ -13,19 +13,19 @@ namespace MyFoodDelivery.Controllers
     public class HomeController : Controller
     {
 
-        private readonly IAllCars _carRep;
-        public HomeController(IAllCars carRepository)
+        private readonly IAllProduct _productRep;
+        public HomeController(IAllProduct productRep)
         {
-            _carRep = carRepository;
+            _productRep = productRep;
         }
         public ViewResult Index()
         {
-            var homeCars = new HomeViewModel
+            var homeProduct = new HomeViewModel
             {
-                FavCars = _carRep.GetFavCars
+                FavProduct = _productRep.GetFavCars
 
             };
-            return View(homeCars);
+            return View(homeProduct);
         }
     }
 }

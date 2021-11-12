@@ -4,10 +4,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace MyFoodDelivery.ViewModels
+namespace MyFoodDelivery.Data.Interfaces
 {
-    public class HomeViewModel
+    public interface IFastFoodCafe
     {
-        public IEnumerable<Product> FavProduct {get;set;}
+        IEnumerable<FastFoodCafe> AllCategories { get; }
     }
 }
