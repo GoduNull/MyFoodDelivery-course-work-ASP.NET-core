@@ -6,7 +6,6 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using MyFoodDelivery.Data;
 using MyFoodDelivery.Data.Interfaces;
-using MyFoodDelivery.Data.mocks;
 using System;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
@@ -39,6 +38,7 @@ namespace MyFoodDelivery
             services.AddMvc(option => option.EnableEndpointRouting = false);
             services.AddDbContext<MyFoodDbContent>(options => options.UseSqlServer(_confstring.GetConnectionString("DefaultConnection")));
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(sp => ShopCart.GetCart(sp));
             services.AddScoped(sp => ShopCart.GetCart(sp));
             services.AddMemoryCache();
         }
@@ -83,7 +83,7 @@ namespace MyFoodDelivery
 
             using (var scope = app.ApplicationServices.CreateScope())
             {
-                DbContent content = scope.ServiceProvider.GetRequiredService<DbContent>();
+                MyFoodDbContent content = scope.ServiceProvider.GetRequiredService<MyFoodDbContent>();
                 //DbObj.Initial(content);
             }
         }

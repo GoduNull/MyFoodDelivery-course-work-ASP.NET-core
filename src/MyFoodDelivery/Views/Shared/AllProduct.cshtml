@@ -2,7 +2,7 @@
 <div class="col-lg-4">
     <img class="img-thumbnail" src="@Model.Img" alt="@Model.Name" />
     <h2> @Model.Name</h2>
-    <p>@Model.FastFoodCafe</p>
+    <p>@Model.FastFoodCafe.ToString()</p>
     <p>Цена: @Model.Price.ToString("c")</p>
     <p><a class="btn btn-warning" asp-controller="ShopCart" asp-action="AddToCart" asp-route-id="@Model.Id">Добавить в корзину</a></p>
 </div>

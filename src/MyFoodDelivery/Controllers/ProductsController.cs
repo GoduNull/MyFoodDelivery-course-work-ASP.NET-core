@@ -18,8 +18,8 @@ namespace MyFoodDelivery.Controllers
             this._allProduct = allProduct;
             this._allFastFoodCafe = allFastFoodCafe;
         }
-        [Route("Cars/List")]
-        [Route("Cars/List/{category}")] //TODO
+        [Route("Products/List")]
+        [Route("Products/List/{fastFoodCafe}")] //TODO
         public ViewResult List(string fastFoodCafe)
         {
             string _fastFoodCafe = fastFoodCafe;

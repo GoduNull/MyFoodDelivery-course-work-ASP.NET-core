@@ -11,5 +11,9 @@ namespace MyFoodDelivery.Data.Models
         public string Name { get; set; }
         public string Address { get; set; }
         public List<Product> Products { get; set; }
+        public override string ToString()
+        {
+            return Name;
+        }
     }
 }
