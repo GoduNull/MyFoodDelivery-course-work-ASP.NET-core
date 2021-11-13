@@ -40,10 +40,7 @@ namespace MyFoodDelivery.Controllers
         }
         public RedirectToActionResult Delete(int id)
         {
-
-
             _shopCart.DeleteToCart(id);
-
             return RedirectToAction("Index");
         }
 

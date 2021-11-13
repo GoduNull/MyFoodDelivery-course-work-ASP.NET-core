@@ -12,7 +12,6 @@ namespace MyFoodDelivery.Controllers
 {
     public class HomeController : Controller
     {
-
         private readonly IAllProduct _productRep;
         public HomeController(IAllProduct productRep)
         {

@@ -16,6 +16,12 @@ namespace MyFoodDelivery.Data.Repository
             this._myFoodDbContent = MyFoodDbContent;
 
         }
+        public void AddProduct(Product product)
+        {
+            product.IsFavourite = false;
+            _myFoodDbContent.Add(product);
+            _myFoodDbContent.SaveChanges();
+        }
         public IEnumerable<Product> Products => _myFoodDbContent.Products.Include(c => c.FastFoodCafe);
 
         public IEnumerable<Product> GetFavCars => _myFoodDbContent.Products.Where(p => p.IsFavourite).Include(c => c.FastFoodCafe);

@@ -11,6 +11,7 @@ namespace MyFoodDelivery.Data.Interfaces
         IEnumerable<Product> Products { get; }
         IEnumerable<Product> GetFavCars { get; }
         Product GetObjectCar(int carid);
+        void AddProduct(Product product);
 
     }
 }
