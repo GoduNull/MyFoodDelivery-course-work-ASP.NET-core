@@ -16,7 +16,8 @@ namespace MyFoodDelivery.Data.Repository
             this._myFoodDbContent = myFoodDbContent;
             this.shopCart = shopCart;  
         }
-        public void createOrder(Order order)
+        public void createOrder(Order order) //добавление заказа в бд
+            // и деталий о заказе
         {
             order.OrderTime = DateTime.Now;
             _myFoodDbContent.Orders.Add(order);
