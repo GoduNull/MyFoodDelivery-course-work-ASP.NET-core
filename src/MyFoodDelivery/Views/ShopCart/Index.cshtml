@@ -4,7 +4,7 @@
 
     {
         <div class="alert alert-warning mt-3">
-            <b>Автомобили:</b> @el.Product.Name<br />
+            <b>Продукты:</b> @el.Product.Name<br />
             <b>Цена:</b> @el.Product.Price.ToString("c")
             <p><a class="btn btn-warning" asp-controller="ShopCart" asp-action="Delete" asp-route-id="@el.Product.Id">Удалить</a></p>
         </div>
