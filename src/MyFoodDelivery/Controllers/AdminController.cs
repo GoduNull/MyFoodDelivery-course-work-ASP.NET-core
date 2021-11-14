@@ -31,7 +31,7 @@ namespace MyFoodDelivery.Controllers
             return View(product);
         }
         [HttpPost]
-        public IActionResult Complete(Product product)
+        public IActionResult Complete(Product product) //Добавление продукты в бд
         {
             allProduct.AddProduct(product);
             ViewBag.Message = "Продукт успешно добавлен";

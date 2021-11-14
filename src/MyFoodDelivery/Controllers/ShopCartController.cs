@@ -31,14 +31,15 @@ namespace MyFoodDelivery.Controllers
         }
         public RedirectToActionResult AddToCart(int id)
         {
-            var item = _productRep.Products.FirstOrDefault(i => i.Id == id);
+            var item = _productRep.Products.FirstOrDefault(i => i.Id == id); //нахождение продукта по Id 
+            //и добавление в корзину
             if (item != null)
             {
                 _shopCart.AddToCart(item);
             }
             return RedirectToAction("Index");
         }
-        public RedirectToActionResult Delete(int id)
+        public RedirectToActionResult Delete(int id) // удаление продукта из корзины 
         {
             _shopCart.DeleteToCart(id);
             return RedirectToAction("Index");

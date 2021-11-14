@@ -16,7 +16,7 @@ namespace MyFoodDelivery.Data.Repository
             this._myFoodDbContent = MyFoodDbContent;
 
         }
-        public void AddProduct(Product product)
+        public void AddProduct(Product product) //Добавление продукта 
         {
             product.IsFavourite = false;
             _myFoodDbContent.Add(product);

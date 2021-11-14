@@ -20,7 +20,7 @@ namespace MyFoodDelivery.Controllers
         }
         [Route("Products/List")]
         [Route("Products/List/{fastFoodCafe}")] //TODO
-        public ViewResult List(string fastFoodCafe)
+        public ViewResult List(string fastFoodCafe) //Вывод продуктов по категориям 
         {
             string _fastFoodCafe = fastFoodCafe;
             IEnumerable<Product> products = null;
