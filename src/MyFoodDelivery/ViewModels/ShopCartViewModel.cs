@@ -9,6 +9,7 @@ namespace MyFoodDelivery.ViewModels
     public class ShopCartViewModel
     {
         public ShopCart ShopCart { get; set; }
-        public int PriceCart { get; set; }
+        public double PriceProduct { get; set; }
+        public double PriceAll { get; set; }
     }
 }

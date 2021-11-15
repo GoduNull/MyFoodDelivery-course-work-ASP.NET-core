@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace MyFoodDelivery.Data.Interfaces
 {
-    public interface ICarsCategory
+    public interface IFastFoodCafe
     {
-      IEnumerable<Category> AllCategories { get; }
+        IEnumerable<FastFoodCafe> AllCategories { get; }
     }
 }

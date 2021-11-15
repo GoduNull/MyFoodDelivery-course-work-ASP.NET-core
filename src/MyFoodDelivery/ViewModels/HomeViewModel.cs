@@ -8,6 +8,6 @@ namespace MyFoodDelivery.ViewModels
 {
     public class HomeViewModel
     {
-        public IEnumerable<Car> FavCars {get;set;}
+        public IEnumerable<Product> FavProduct {get;set;}
     }
 }

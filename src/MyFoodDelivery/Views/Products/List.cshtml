@@ -1,0 +1,10 @@
+﻿<h1>Все товары</h1>
+<h3>@Model.CurrFastFoodCafe</h3>
+<div class="row mt-5 mb-2  ">
+    @{
+        foreach (Product product in Model.AllProduct)
+        {
+            @Html.Partial("AllProduct", product)
+        }
+    }
+</div>

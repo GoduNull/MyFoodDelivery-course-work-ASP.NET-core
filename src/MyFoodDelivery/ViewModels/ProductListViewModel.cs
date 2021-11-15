@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MyFoodDelivery.ViewModels
 {
-    public class CarsListViewModels
+    public class ProductListViewModel
     {
-        public IEnumerable<Car> AllCars { get; set; }
-        public string CurrCategory { get; set; }
+        public IEnumerable<Product> AllProduct { get; set; }
+        public string CurrFastFoodCafe { get; set; }
     }
 }

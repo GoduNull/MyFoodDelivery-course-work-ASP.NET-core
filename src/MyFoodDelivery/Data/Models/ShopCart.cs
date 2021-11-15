@@ -10,35 +10,41 @@ namespace MyFoodDelivery.Data.Models
 {
     public class ShopCart
     {
-        private readonly DbContent dbContent;
-        public ShopCart(DbContent dbContent)
+        private readonly MyFoodDbContent _myFoodDbContent;
+        public ShopCart(MyFoodDbContent myFoodDbContent)
         {
-            this.dbContent = dbContent;
-
+            this._myFoodDbContent = myFoodDbContent;
         }
         public string ShopCartId { get; set; }
         public List<ShopCartItem> ListShopItems { get; set; }
         public static ShopCart GetCart(IServiceProvider services)
         {
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
-            var context = services.GetService<DbContent>();
+            var context = services.GetService<MyFoodDbContent>();
             string shopCartid = session.GetString("CartId") ?? Guid.NewGuid().ToString();
             session.SetString("CartId", shopCartid);
             return new ShopCart(context) { ShopCartId = shopCartid };
         }
-        public void AddToCart(Car car)
+        public void AddToCart(Product product)
         {
-            this.dbContent.ShopCartItem.Add(new ShopCartItem
+            this._myFoodDbContent.ShopCartItems.Add(new ShopCartItem
             {
                 ShopCarId = ShopCartId,
-                Car=car,
-                Price = car.Price
+                Product=product,
+                Price = product.Price
             });
-            dbContent.SaveChanges();
+            _myFoodDbContent.SaveChanges();
+        }
+        public void DeleteToCart(int id) //TODO голова болит
+        {
+            var asd = _myFoodDbContent.ShopCartItems.Where(c => (c.ShopCarId == ShopCartId)&&(c.Product.Id== id)).FirstOrDefault();
+            this._myFoodDbContent.ShopCartItems.Remove(asd);
+            _myFoodDbContent.SaveChanges();
+
         }
         public List<ShopCartItem> GetShopCartItems()
         {
-            return dbContent.ShopCartItem.Where(c => c.ShopCarId == ShopCartId).Include(s => s.Car).ToList();
+            return _myFoodDbContent.ShopCartItems.Where(c => c.ShopCarId == ShopCartId).Include(s => s.Product).ToList();
         }
     }
 }

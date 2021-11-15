@@ -5,17 +5,15 @@ using System.Threading.Tasks;
 
 namespace MyFoodDelivery.Data.Models
 {
-    public class Car
+    public class Product
     {
         public int Id { get; set; }
         public string Name { get; set; }
-        public string ShortDesc { get; set; }
-        public string LongDesc { get; set; }
         public string Img { get; set; }
-        public ushort Price { get; set; }
+        public double Price { get; set; }
+        public double Volume { get; set; }
         public bool IsFavourite { get; set; }
-        public bool Available { get; set; }
-        public int CategoryId { get; set; }
-        public virtual Category Category { get; set; }
+        public int FastFoodCafeId { get; set; }
+        public virtual FastFoodCafe FastFoodCafe { get; set; }
     }
 }

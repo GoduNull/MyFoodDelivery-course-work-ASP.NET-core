@@ -11,11 +11,11 @@ namespace MyFoodDelivery.Controllers
 {
     public class ShopCartController : Controller
     {
-        private readonly IAllCars _carRep;
+        private readonly IAllProduct _productRep;
         private readonly ShopCart _shopCart;
-        public ShopCartController(IAllCars carRepository, ShopCart shopCart)
+        public ShopCartController(IAllProduct productRep, ShopCart shopCart)
         {
-            _carRep = carRepository;
+            _productRep = productRep;
             _shopCart = shopCart;
 
         }
@@ -31,14 +31,19 @@ namespace MyFoodDelivery.Controllers
         }
         public RedirectToActionResult AddToCart(int id)
         {
-            var item = _carRep.Cars.FirstOrDefault(i=>i.Id==id);
+            var item = _productRep.Products.FirstOrDefault(i => i.Id == id); //нахождение продукта по Id 
+            //и добавление в корзину
             if (item != null)
             {
                 _shopCart.AddToCart(item);
             }
             return RedirectToAction("Index");
         }
-
+        public RedirectToActionResult Delete(int id) // удаление продукта из корзины 
+        {
+            _shopCart.DeleteToCart(id);
+            return RedirectToAction("Index");
+        }
 
     }
 }
