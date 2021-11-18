@@ -1,6 +1,6 @@
 ﻿@model Product
 <div class="row">
-    <h3> Оформление заказа</h3>
+    <h3> Добавление продукции </h3>
     <form asp-action="Complete" method="post" class="form-horizontal">
         <div class="form-group">
             <label asp-for="Name"></label>
@@ -32,13 +32,6 @@
             </div>
         </div>
         <div class="form-group">
-            <label asp-for="IsFavourite"></label>
-            <div class="col-md-5">
-                <input asp-for="IsFavourite" class="form-control" />
-                <span asp-validation-for="IsFavourite" class="text-danger"></span>
-            </div>
-        </div>
-        <div class="form-group">
             <label asp-for="FastFoodCafeId"></label>
             <div class="col-md-5">
                 <input asp-for="FastFoodCafeId" class="form-control" />
@@ -46,6 +39,6 @@
             </div>
         </div>
 
-        <input class="btn btn-success" type="submit" value="Нажми" />
+        <input class="btn btn-success" type="submit" value="Отправить" />
     </form>
 </div>
